@@ -1,51 +1,20 @@
 ﻿@model IEnumerable<PortalDeNoticias.Models.Noticia>
 
 @{
-    ViewBag.Title = "Buscar";
+    ViewBag.Title = "Buscar noticias";
 }
 
-<h2>Buscar</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Autor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Conteudo)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Autor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Conteudo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@foreach (var item in Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p class="panel-title">@item.Titulo</p>
+        </div>
+        <div class="panel-body">
+            <p>@item.Conteudo.Substring(0, 100) ...</p>
+        </div>
+        <div class="panel-footer">
+            @Html.ActionLink("Ler mais", "Detalhes", new { id = item.Id }, new { @class = "btn btn-default" })
+        </div>
+    </div>
 }
-
-</table>

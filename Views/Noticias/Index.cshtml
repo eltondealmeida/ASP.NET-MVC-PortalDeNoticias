@@ -4,17 +4,19 @@
     ViewBag.Title = "Página Inicial";
 }
 
-@foreach (var item in Model) 
+@foreach (var item in Model)
 {
+<table style="width:900px;" border="1">
     <div class="panel panel-default">
         <div class="panel-heading">
             <p class="panel-title">@item.Titulo</p>
         </div>
         <div class="panel-body">
-            <p>@item.Conteudo.Substring(0,50) ...</p>
+            <p>@item.Conteudo.Substring(0, 100) ...</p>
         </div>
         <div class="panel-footer">
-            @Html.ActionLink("Ler mais", "Detalhes", new {id= item.Id}, new {@class = "btn btn-default"})
+            @Html.ActionLink("Ler mais", "Detalhes", new { id = item.Id }, new { @class = "btn btn-default" })
         </div>
     </div>
+</table>
 }
